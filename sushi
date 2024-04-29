@@ -1,0 +1,80 @@
+n gonzalez
+print("Menú sushi")
+
+pedido = []
+pedidopi = 0
+pedidoot = 0
+pedidopu = 0
+pedidoan = 0
+canpi= 0
+cano= 0
+canpu =0
+canan= 0
+soyotaku = "descuento"
+precios = {
+    "Pikachu Roll": 4500,
+    "Otaku Roll": 5000,
+    "Pulpo Venenoso Roll": 5200,
+    "Anguila Eléctrica Roll": 4800
+} 
+
+while True:
+    op = int(input("1. Pikachu Roll $4500:\n2. Otaku Roll $5000:\n3. Pulpo Venenoso Roll $5200:\n4. Anguila Eléctrica Roll $4800:\n5. Ver carrito/pagar:\n6. Salir:\n"))
+    
+    if op == 1:
+        canpi = int(input("Ingrese la cantidad: "))
+        pedidopi += 4500 * canpi
+        print("Pikachu Roll ingresado al carrito")
+    elif op == 2:
+        cano = int(input("Ingrese la cantidad: "))
+        pedidoot += 5000 * cano
+        print("Otaku Roll ingresado al carrito")
+    elif op == 3:
+        canpu = int(input("Ingrese la cantidad: "))
+        pedidopu += 5200 * canpu
+        print("Pulpo Venenoso Roll ingresado al carrito")
+    elif op == 4:
+        canan = int(input("Ingrese la cantidad: "))
+        pedidoan += 4800 * canan
+        print("Anguila Eléctrica Roll ingresado al carrito")
+    elif op == 5:
+        print(f"Lista de artículos:")
+        print(f"Pikachu: {canpi} x $4500 = ${pedidopi}")
+        print(f"Otaku: {cano} x $5000 = ${pedidoot}")
+        print(f"Pulpo Venenoso: {canpu} x $5200 = ${pedidopu}")
+        print(f"Anguila Eléctrica: {canan} x $4800 = ${pedidoan}")
+
+        total_pedido = pedidopi + pedidoot + pedidopu + pedidoan
+        print(f"Total pedido: ${total_pedido}")
+
+        total_descuento = total_pedido * 0.10
+        print(f"Descuento (10%): ${total_descuento}")
+
+        total_con_descuento = total_pedido - total_descuento
+        print(f"Total con descuento: ${total_con_descuento}")
+
+        while True:
+            pagar = input("¿Desea pagar? (si/no): ")
+            if pagar.lower() == "si":
+                descuento=input("ingrese codigo de descuento: ")
+                if descuento == soyotaku:
+                    print(f"Total a pagar: ${total_con_descuento}")
+                    pedido = []
+                    pedidopi = 0
+                    pedidoot = 0
+                    pedidopu = 0
+                    pedidoan = 0
+                    break
+                if descuento != soyotaku:
+                    print ("no tiene descuento")
+                    print(f"Total a pagar: ${total_pedido}")
+            elif pagar.lower() == "no":
+                    print("salió")
+            break
+        else:
+            print("Por favor, ingrese si o no.")
+    elif op == 6:
+        print("¡Gracias por visitarnos! Vuelva pronto.")
+        break
+    else:
+        print("¡Ingrese una opción correcta!")
